@@ -2,8 +2,7 @@ FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
 
 WORKDIR /app
 
-RUN yum install -y curl && yum clean all
+COPY target/*.jar app.jar
 
-VOLUME /tmp
-EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/app.jar"]
 
